@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B0A09">
+<meta name="robots" content="index, follow">
+<!-- Al conectar el dominio definitivo: cambiar todolosabia.pages.dev en og:image y en el JSON-LD -->
+<title>Todo lo sabía · la primera novela de David de Loro</title>
+<meta name="description" content="Seis jóvenes. Una profesora. Siete vidas. Todo lo sabía, de David de Loro: un drama con alma de thriller sobre lo que callan los jóvenes y no quieren ver los adultos. Ya a la venta.">
+<meta property="og:type" content="book">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="David de Loro">
+<meta property="og:title" content="Todo lo sabía · David de Loro">
+<meta property="og:description" content="Todos tenemos algo que nadie sabe. Siete historias. Una verdad que duele.">
+<meta property="og:image" content="https://todolosabia.pages.dev/assets/img/libro/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bebas-neue-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="image" href="/assets/img/libro/portada.webp" fetchpriority="high">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Book","name":"Todo lo sabía","author":{"@type":"Person","name":"David de Loro"},
+"isbn":"9791370169756","bookFormat":"https://schema.org/Hardcover","inLanguage":"es","genre":"Drama",
+"publisher":{"@type":"Organization","name":"Círculo Rojo Editorial"},
+"image":"https://todolosabia.pages.dev/assets/img/libro/libro-3-4.webp",
+"description":"Seis jóvenes. Una profesora. Siete vidas entrelazadas por decisiones silenciosas, secretos enterrados y heridas que nadie quiere mirar."}
+</script>
+<style>
+@font-face{font-family:"Bebas Neue";font-weight:400;font-display:swap;src:url("/assets/fonts/bebas-neue-latin.woff2") format("woff2")}
+@font-face{font-family:"Caveat";font-weight:400 700;font-display:swap;src:url("/assets/fonts/caveat-latin.woff2") format("woff2")}
+@font-face{font-family:"Fraunces";font-style:italic;font-weight:300;font-display:swap;src:url("/assets/fonts/fraunces-300-italic-latin.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:300 600;font-display:swap;src:url("/assets/fonts/inter-latin.woff2") format("woff2")}
+:root{--ink:#0B0A09;--ink2:#151311;--bone:#ECE6DC;--dim:#A9A197;--red:#C0281F;--red2:#EA5045;--kraft:#C9A878;--line:rgba(236,230,220,.14);
+--h:'Bebas Neue',Impact,'Arial Narrow',sans-serif;--hand:'Caveat','Comic Sans MS',cursive;--q:'Fraunces',Georgia,serif;--u:'Inter',system-ui,sans-serif;
+--p:20px;
+/* Libro: alto, ancho (proporción de la portada) y grosor */
+--bh:min(38svh,360px,100vw);--bw:calc(var(--bh)*.7285);--bt:calc(var(--bh)*.115)}
+@media (min-width:960px){:root{--p:clamp(32px,5vw,80px);--bh:min(62vh,600px,40vw)}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--ink)}
+body{background:var(--ink);color:var(--bone);font:300 16px/1.65 var(--u);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ol,ul{list-style:none}
+:focus-visible{outline:2px solid var(--red2);outline-offset:4px}
+.skip{position:absolute;left:-9999px;top:8px;z-index:20;background:var(--bone);color:var(--ink);padding:10px 14px}
+.skip:focus{left:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Fondo: grano + viñeta */
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.09;
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 30%,rgba(0,0,0,.75) 100%)}
+
+/* Cabecera */
+.bar{position:fixed;inset:0 0 auto;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 var(--p);
+background:linear-gradient(var(--ink),rgba(11,10,9,0));transition:background .3s}
+.bar.on{background:rgba(11,10,9,.92);border-bottom:1px solid var(--line)}
+.brand{font:400 1.55rem/1 var(--h);letter-spacing:.04em}
+.brand span{color:var(--red2)}
+.bar nav{display:flex;align-items:center;gap:26px}
+.bar nav a:not(.btn){display:none;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.bar nav a:not(.btn):hover{color:var(--bone)}
+@media (min-width:1100px){.bar nav a:not(.btn){display:inline}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 22px;border:1px solid transparent;
+font:400 1.15rem/1 var(--h);letter-spacing:.08em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:#d8352b}
+.btn.ghost{border-color:rgba(236,230,220,.4)}.btn.ghost:hover{background:var(--bone);color:var(--ink)}
+.bar .btn{min-height:44px;padding:10px 18px}
+
+/* Escenario del libro 3D (fijo, detrás del texto) */
+.stage{position:fixed;inset:0;z-index:1;pointer-events:none;display:grid;place-items:center}
+.glow{position:absolute;left:50%;top:50%;width:min(120vw,1100px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+background:radial-gradient(circle,rgba(192,40,31,.34),rgba(192,40,31,.08) 40%,transparent 66%);opacity:.5;transition:opacity .8s}
+.drop{animation:drop 1.7s cubic-bezier(.2,.85,.25,1) both}
+@keyframes drop{from{transform:translateY(-75vh) rotate(-14deg);opacity:0}35%{opacity:1}to{transform:none;opacity:1}}
+.pos{position:relative;perspective:2200px;will-change:transform}
+.book{position:relative;width:var(--bw);height:var(--bh);transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-24deg) rotateZ(-3deg);will-change:transform}
+.f{position:absolute;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.f img{width:100%;height:100%}
+.sh{position:absolute;inset:0;background:#000;opacity:0}
+.front{inset:0;transform:translateZ(calc(var(--bt)/2));border-radius:2px 5px 5px 2px}
+.back{inset:0;transform:rotateY(180deg) translateZ(calc(var(--bt)/2));border-radius:5px 2px 2px 5px}
+.spine,.edge{top:0;height:100%;width:var(--bt);left:calc(50% - var(--bt)/2)}
+.spine{transform:rotateY(-90deg) translateZ(calc(var(--bw)/2 - 1px))}
+.edge{transform:rotateY(90deg) translateZ(calc(var(--bw)/2 - 2px))}
+.top,.bottom{left:0;width:100%;height:var(--bt);top:calc(50% - var(--bt)/2);
+background:linear-gradient(90deg,#191715 0 4%,transparent 4%),linear-gradient(#8a6a42 0 6%,transparent 6% 94%,#8a6a42 94%),
+repeating-linear-gradient(#efe9dc 0 2px,#d6cdbd 2px 3px)}
+.top{transform:rotateX(90deg) translateZ(calc(var(--bh)/2 - 2px))}
+.bottom{transform:rotateX(-90deg) translateZ(calc(var(--bh)/2 - 2px))}
+.gl{position:absolute;inset:0;background:linear-gradient(112deg,transparent 38%,rgba(255,236,210,.18) 49%,transparent 60%) 0 0/260% 100% no-repeat;mix-blend-mode:screen}
+.shadow{position:absolute;left:50%;top:calc(50% + var(--bh)/2 + 26px);width:calc(var(--bw)*1.1);height:34px;margin-left:calc(var(--bw)*-.55);
+border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),transparent);filter:blur(6px)}
+
+/* Secciones: el texto flota a los lados del libro */
+main{position:relative}
+.sec{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:calc(var(--bh) + 130px) var(--p) 40svh}
+.hero{padding-bottom:56px}
+/* En móvil los bloques de texto dejan huecos para ver girar el libro entre uno y otro */
+.grid{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;display:grid;gap:52svh}
+.hero .grid{gap:16px}
+.side{background:rgba(11,10,9,.74);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);padding:24px 22px}
+@media (min-width:960px){
+  .sec{align-items:center;min-height:125vh;padding:110px var(--p)}
+  .grid{grid-template-columns:1fr calc(var(--bw) + clamp(100px,10vw,180px)) 1fr;align-items:center;gap:0}
+  .side{background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border:0;padding:0;will-change:transform,opacity}
+  .side.l{grid-column:1;text-align:right}
+  .side.r{grid-column:3}
+  .side.l .btns,.side.l .tag{justify-content:flex-end}
+}
+@media (min-width:960px) and (max-height:820px){
+  .cast li{padding:9px 0}
+  .cast strong{font-size:1.6rem}
+  .cast-title{font-size:clamp(2.4rem,4vw,3.6rem)}
+}
+.tag{display:flex;align-items:center;gap:12px;font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--red2);margin-bottom:16px}
+.tag::before{content:'';width:28px;height:1px;background:currentColor}
+.side.l .tag::before{order:0}
+h1,h2,h3{font-family:var(--h);font-weight:400;line-height:.92;letter-spacing:.01em;text-wrap:balance}
+h1{font-size:clamp(3.4rem,7vw,7.2rem)}
+h2{font-size:clamp(2.7rem,5vw,5.4rem)}
+h3{font-size:clamp(2rem,3vw,3.2rem)}
+.red{color:var(--red2)}
+.lead{font-size:1.06rem;color:#D8D1C6;margin-top:18px;max-width:34em}
+.side.l .lead{margin-left:auto}
+p+p{margin-top:14px}
+.dim{color:var(--dim)}
+.hand{font-family:var(--hand);font-weight:600;font-size:clamp(1.7rem,2.4vw,2.3rem);line-height:1.15;color:var(--kraft)}
+.hand.red{color:var(--red2)}
+.quote{font-family:var(--q);font-style:italic;font-size:clamp(1.6rem,2.6vw,2.6rem);line-height:1.25;letter-spacing:-.01em}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* Decoración: palabras manuscritas que flotan */
+.words{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.w{position:absolute;font-family:var(--hand);font-weight:600;color:rgba(201,168,120,.16);white-space:nowrap;line-height:1;transform:rotate(var(--r,0deg))}
+.w.rd{color:rgba(234,80,69,.22)}
+.w.ch{font-family:var(--h);font-weight:400;color:rgba(236,230,220,.13);letter-spacing:.04em}
+@media (max-width:959px){.w:nth-child(n+4){display:none}}
+
+/* Hero */
+.hero .cue{display:none}
+@media (min-width:960px){
+  .hero{min-height:100vh}
+  .hero .cue{display:flex;position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;flex-direction:column;align-items:center;gap:10px;
+    font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+  .cue i{width:1px;height:46px;background:linear-gradient(var(--red2),transparent);animation:cue 2s ease-in-out infinite;transform-origin:top}
+}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* Personajes */
+.cast li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.cast li:first-child{border-top:0}
+.cast b{grid-row:span 2;font:400 1.1rem/1.6 var(--h);color:var(--red2);letter-spacing:.06em}
+.cast strong{font:400 1.9rem/1 var(--h);letter-spacing:.04em}
+.cast span{font-size:.94rem;color:var(--dim)}
+@media (min-width:960px){
+  .side.l .cast li{grid-template-columns:1fr auto}
+  .side.l .cast b{grid-column:2;grid-row:1/span 2}
+  .side.l .cast strong,.side.l .cast span{grid-column:1;grid-row:auto}
+}
+.cast-title{margin-bottom:18px}
+
+/* Acoso */
+.help{margin-top:26px;padding:14px 16px;border-left:2px solid var(--red2);background:rgba(192,40,31,.08);font-size:.9rem;color:#D8D1C6}
+.help a{color:var(--bone);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.claim{font:400 clamp(1.5rem,2.2vw,2.1rem)/1.15 var(--h);letter-spacing:.05em;margin-top:22px}
+.claim .blue{color:#7FB2E5}
+
+/* Autor */
+.author{width:min(300px,100%);aspect-ratio:358/434;object-fit:cover;filter:grayscale(.15) contrast(1.05);box-shadow:0 30px 60px -20px rgba(0,0,0,.9)}
+.side.l .author{margin-left:auto}
+.caption{margin-top:14px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:.9rem}
+.links a{border-bottom:1px solid var(--red2);padding-bottom:2px}
+.links a:hover{color:var(--red2)}
+
+/* Comprar */
+.shops{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.shop{display:flex;flex-direction:column;justify-content:center;min-height:76px;padding:12px 16px;border:1px solid rgba(236,230,220,.28);transition:background .2s,border-color .2s}
+.shop small{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.shop span{font:400 1.6rem/1.05 var(--h);letter-spacing:.04em}
+.shop:hover{background:var(--red);border-color:var(--red)}
+.shop:hover small{color:#ffd9d5}
+.isbn{margin-top:16px;font-size:.78rem;color:var(--dim)}
+.foot{position:relative;z-index:2;border-top:1px solid var(--line);padding:22px var(--p) 30px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
+font-size:.78rem;color:var(--dim);background:var(--ink)}
+.foot a:hover{color:var(--bone)}
+
+/* Índice lateral de capítulos */
+.dots{display:none}
+@media (min-width:960px){
+  .dots{display:flex;flex-direction:column;gap:6px;position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9}
+  .dots a{display:grid;place-items:center;width:24px;height:24px}
+  .dots a::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(236,230,220,.3);transition:background .3s,transform .3s}
+  .dots a.on::before{background:var(--red2);transform:scale(1.6)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .drop,.cue i{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#historia">Saltar al contenido</a>
+
+<header class="bar" id="bar">
+  <a class="brand" href="#inicio">Todo lo <span>sabía</span></a>
+  <nav aria-label="Secciones">
+    <a href="#historia">La historia</a>
+    <a href="#personajes">Personajes</a>
+    <a href="#proyecto-educativo">Proyecto educativo</a>
+    <a href="#autor">El autor</a>
+    <a class="btn red" href="#comprar">Comprar</a>
+  </nav>
+</header>
+
+<!-- El libro: una caja 3D con las caras reales (portada, lomo, contraportada y canto) -->
+<div class="stage" aria-hidden="true">
+  <div class="glow" id="glow"></div>
+  <div class="drop">
+    <div class="pos" id="pos">
+      <div class="shadow" id="shadow"></div>
+      <div class="book" id="book">
+        <div class="f front" data-n="0,0,1"><img src="/assets/img/libro/portada.webp" width="797" height="1094" alt=""><i class="gl" id="gloss"></i><i class="sh"></i></div>
+        <div class="f back" data-n="0,0,-1"><img src="/assets/img/libro/contraportada.webp" width="797" height="1094" alt="" loading="lazy"><i class="sh"></i></div>
+        <div class="f spine" data-n="-1,0,0"><img src="/assets/img/libro/lomo.webp" width="119" height="1204" alt=""><i class="sh"></i></div>
+        <div class="f edge" data-n="1,0,0"><img src="/assets/img/libro/canto.webp" width="153" height="1133" alt=""><i class="sh"></i></div>
+        <div class="f top" data-n="0,-1,0"><i class="sh"></i></div>
+        <div class="f bottom" data-n="0,1,0"><i class="sh"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="dots" aria-label="Capítulos">
+  <a href="#inicio" aria-label="Inicio"></a>
+  <a href="#historia" aria-label="La historia"></a>
+  <a href="#personajes" aria-label="Los personajes"></a>
+  <a href="#por-que" aria-label="Por qué leerlo"></a>
+  <a href="#acoso" aria-label="El acoso escolar"></a>
+  <a href="#proyecto-educativo" aria-label="Proyecto educativo"></a>
+  <a href="#autor" aria-label="El autor"></a>
+  <a href="#comprar" aria-label="Comprar"></a>
+</nav>
+
+<main>
+<!-- data-pose: giro Y, giro X, giro Z (grados), desplazamiento vertical (vh), escala, brillo rojo del fondo -->
+<section class="sec hero" id="inicio" data-pose="-24 8 -3 2 1.05 .55">
+  <div class="words">
+    <span class="w" style="top:14%;left:6%;font-size:2.6rem;--r:-8deg" data-s=".25">miedo</span>
+    <span class="w rd" style="top:72%;left:12%;font-size:2.2rem;--r:6deg" data-s=".4">te quiero</span>
+    <span class="w" style="top:22%;right:8%;font-size:2.4rem;--r:7deg" data-s=".3">¿por qué yo?</span>
+    <span class="w" style="top:80%;right:14%;font-size:2rem;--r:-5deg" data-s=".5">no aguanto más</span>
+    <span class="w" style="top:48%;left:3%;font-size:1.8rem;--r:3deg" data-s=".6">confusión</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">La primera novela de David de Loro</p>
+      <h1>Todos tenemos algo que nadie <span class="red">sabe.</span></h1>
+    </div>
+    <div class="side r">
+      <h3>Siete historias reales. <span class="red">Una verdad que duele.</span></h3>
+      <p class="lead">Un drama con alma de thriller sobre lo que callan los jóvenes y no quieren ver los adultos.</p>
+      <div class="btns">
+        <a class="btn red" href="#comprar">Comprar el libro</a>
+        <a class="btn ghost" href="#historia">Leer la sinopsis</a>
+      </div>
+    </div>
+  </div>
+  <div class="cue" aria-hidden="true">Desliza<i></i></div>
+</section>
+
+<section class="sec" id="historia" data-pose="168 4 3 0 1 .4">
+  <div class="words">
+    <span class="w" style="top:12%;right:10%;font-size:2.3rem;--r:-6deg" data-s=".35">secretos</span>
+    <span class="w rd" style="top:76%;left:8%;font-size:2.1rem;--r:5deg" data-s=".5">demasiado tarde</span>
+    <span class="w" style="top:58%;right:4%;font-size:1.9rem;--r:8deg" data-s=".25">lo siento</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">01 · La historia</p>
+      <p class="quote">Creían tener el control. Creían saberlo todo. Pero hay verdades que solo se aprenden <span class="red">cuando es demasiado tarde.</span></p>
+    </div>
+    <div class="side r">
+      <h3>Seis jóvenes. Una profesora. Siete vidas.</h3>
+      <p class="lead">Entrelazadas por decisiones silenciosas, secretos enterrados y heridas que nadie quiere mirar.</p>
+      <p class="lead">Todo estalla cuando uno de ellos muere. Y lo que parecía una simple etapa adolescente se convierte en una red de culpas, errores, traiciones y revelaciones que cambiarán sus vidas para siempre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="personajes" data-pose="400 -6 -2 0 .96 .45">
+  <div class="words">
+    <span class="w" style="top:8%;left:40%;font-size:2.2rem;--r:-4deg" data-s=".3">estoy contigo</span>
+    <span class="w rd" style="top:88%;left:44%;font-size:2rem;--r:4deg" data-s=".45">falsa</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">02 · Los personajes</p>
+      <h2 class="cast-title">Siete personajes. <span class="red">Siete golpes al corazón.</span></h2>
+      <ol class="cast">
+        <li><b>01</b><strong>Bruno</strong><span>El chico que parecía tenerlo todo… hasta que la vida lo golpeó donde más dolía.</span></li>
+        <li><b>02</b><strong>Hugo</strong><span>Atrapado entre las sombras de un padre ausente y las calles que se convirtieron en su refugio.</span></li>
+        <li><b>03</b><strong>Leo</strong><span>Juega con el peligro sin medir el precio.</span></li>
+      </ol>
+    </div>
+    <div class="side r">
+      <ol class="cast">
+        <li><b>04</b><strong>Irene</strong><span>Obligada a madurar demasiado pronto.</span></li>
+        <li><b>05</b><strong>Claudia</strong><span>Víctima de un acoso que amenaza con borrarla.</span></li>
+        <li><b>06</b><strong>Iván</strong><span>El rebelde con el alma hecha pedazos.</span></li>
+        <li><b>07</b><strong>Elena</strong><span>Su profesora, que lucha por salvarlos… mientras esconde el secreto más devastador de todos.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="por-que" data-pose="720 0 0 0 1.02 .5">
+  <div class="words">
+    <span class="w" style="top:16%;left:10%;font-size:2.4rem;--r:-7deg" data-s=".3">respira</span>
+    <span class="w" style="top:70%;right:9%;font-size:2.3rem;--r:5deg" data-s=".45">te escucho</span>
+    <span class="w rd" style="top:84%;left:20%;font-size:2rem;--r:-3deg" data-s=".55">aquí estoy</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">03 · Por qué leerlo</p>
+      <h2>Drama social. Emoción real. <span class="red">Sin filtros.</span></h2>
+    </div>
+    <div class="side r">
+      <h3>Ideal para jóvenes. Impactante para adultos.</h3>
+      <p class="lead">Una historia cruda y profundamente humana sobre crecer en un mundo que no siempre escucha, y sobre cómo, a veces, el mayor enemigo está dentro de uno mismo.</p>
+      <p class="hand red" style="margin-top:24px">Porque a veces, lo que más duele… es lo que nadie se atreve a decir.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="acoso" data-pose="1040 16 -11 3 .94 .95">
+  <div class="words">
+    <span class="w ch" style="top:7%;left:5%;font-size:2.6rem;--r:-6deg" data-s=".3">Ridículo</span>
+    <span class="w ch" style="top:6%;right:9%;font-size:2.3rem;--r:5deg" data-s=".45">Nadie te quiere</span>
+    <span class="w ch" style="top:89%;left:30%;font-size:2.2rem;--r:4deg" data-s=".5">Nunca serás suficiente</span>
+    <span class="w ch" style="top:85%;left:4%;font-size:2rem;--r:-3deg" data-s=".35">Fracaso</span>
+    <span class="w ch" style="top:90%;right:9%;font-size:2.4rem;--r:-5deg" data-s=".6">Débil</span>
+    <span class="w ch" style="top:14%;left:44%;font-size:1.9rem;--r:7deg" data-s=".25">Solo</span>
+    <span class="w ch" style="top:80%;right:30%;font-size:2rem;--r:2deg" data-s=".4">Extraño</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">04 · El acoso escolar</p>
+      <h2>En los institutos no solo se aprende… también se <span class="red">sufre.</span></h2>
+    </div>
+    <div class="side r">
+      <p class="quote">El acoso escolar deja heridas que no siempre <span class="red">se ven.</span></p>
+      <p class="hand" style="margin-top:18px">¿Hasta cuándo?</p>
+      <p class="claim">Rompe <span class="red">el silencio.</span> Ayuda. Escucha. <span class="blue">Respeta.</span></p>
+      <p class="help">Si tú o alguien que conoces lo está pasando mal, no estás solo: <a href="tel:900202010">Fundación ANAR 900 20 20 10</a> (niños y adolescentes) · <a href="tel:024">Línea 024</a>. Gratis, confidencial, 24 horas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="proyecto-educativo" data-pose="1170 0 0 0 1.04 .5">
+  <div class="words">
+    <span class="w" style="top:14%;left:12%;font-size:2.3rem;--r:-5deg" data-s=".35">cuenta conmigo</span>
+    <span class="w rd" style="top:78%;right:10%;font-size:2.2rem;--r:6deg" data-s=".5">autoestima</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">05 · Proyecto educativo</p>
+      <h2>Historias que cambian <span class="red">decisiones.</span></h2>
+    </div>
+    <div class="side r">
+      <h3>Todo lo sabía, en las aulas.</h3>
+      <p class="lead">Programa educativo para adolescentes basado en el proyecto audiovisual de David de Loro. Para que lo que se calla en los pasillos se pueda hablar en clase.</p>
+      <div class="btns">
+        <a class="btn ghost" href="https://www.instagram.com/todolosabia/" target="_blank" rel="noopener">Llévalo a tu centro · @todolosabia</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="autor" data-pose="1300 6 4 0 .92 .4">
+  <div class="grid">
+    <div class="side l">
+      <img class="author" src="/assets/img/libro/autor.webp" width="358" height="434" alt="Retrato de David de Loro" loading="lazy">
+      <p class="caption">David de Loro · Madrid, 1983</p>
+    </div>
+    <div class="side r">
+      <p class="tag">06 · El autor</p>
+      <h3>Un creador incansable.</h3>
+      <p class="lead">Un alma inquieta que convirtió cada obstáculo en una nueva historia que contar. Fotógrafo premiado internacionalmente, director de cine y ahora escritor.</p>
+      <p class="lead">Afincado en Torrevieja (Alicante) desde hace más de treinta años, fue electricista, buzo profesional, patrón de la marina mercante e instructor de buceo. Su mirada, entrenada para capturar emociones a través de la cámara, ahora se traslada al papel.</p>
+      <p class="lead"><em class="red">Todo lo sabía</em> es su primera incursión literaria: un golpe directo a la conciencia.</p>
+      <div class="links">
+        <a href="https://www.instagram.com/daviddlrfoto/" target="_blank" rel="noopener">@daviddlrfoto</a>
+        <a href="https://www.instagram.com/todolosabia/" target="_blank" rel="noopener">@todolosabia</a>
+        <a href="https://davideloro.pages.dev/" target="_blank" rel="noopener">Su fotografía</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="comprar" data-pose="1462 6 -2 -3 .96 .6">
+  <div class="words">
+    <span class="w rd" style="top:12%;left:8%;font-size:2.4rem;--r:-6deg" data-s=".3">te escucho</span>
+    <span class="w" style="top:70%;right:6%;font-size:2.2rem;--r:4deg" data-s=".45">aquí estoy</span>
+  </div>
+  <div class="grid">
+    <div class="side l">
+      <p class="tag">Ya a la venta</p>
+      <h2>Lee. Siente. Reflexiona. <span class="red">Cambia.</span></h2>
+    </div>
+    <div class="side r">
+      <h3>Consigue tu ejemplar</h3>
+      <!-- PENDIENTE: cambiar las búsquedas por ISBN por los enlaces directos a la ficha de cada tienda -->
+      <div class="shops">
+        <a class="shop" href="https://www.amazon.es/s?k=9791370169756" target="_blank" rel="noopener"><small>Comprar en</small><span>Amazon</span></a>
+        <a class="shop" href="https://www.fnac.es/SearchResult/ResultList.aspx?Search=9791370169756" target="_blank" rel="noopener"><small>Comprar en</small><span>Fnac</span></a>
+        <a class="shop" href="https://www.elcorteingles.es/search-nwx/1/?s=9791370169756" target="_blank" rel="noopener"><small>Comprar en</small><span>El Corte Inglés</span></a>
+        <a class="shop" href="https://www.casadellibro.com/?query=9791370169756" target="_blank" rel="noopener"><small>Comprar en</small><span>Casa del Libro</span></a>
+      </div>
+      <p class="isbn">Círculo Rojo Editorial · Tapa dura · ISBN 979-13-7016975-6</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <span>© 2026 David de Loro · <em>Todo lo sabía</em></span>
+  <span><a href="https://www.instagram.com/todolosabia/" target="_blank" rel="noopener">Instagram @todolosabia</a> · <a href="https://davideloro.pages.dev/" target="_blank" rel="noopener">David de Loro, fotografía</a></span>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const deskQ = matchMedia('(min-width: 960px)');
+  const bar = $('#bar'), pos = $('#pos'), book = $('#book'), shadow = $('#shadow'), glow = $('#glow'), gloss = $('#gloss');
+  const secs = $$('.sec[data-pose]');
+  const poses = secs.map(s => s.dataset.pose.trim().split(/\s+/).map(Number)); // ry rx rz y s glow
+  const dots = $$('.dots a');
+  const faces = $$('.f', book).map(f => ({ sh: $('.sh', f), n: f.dataset.n.split(',').map(Number) }));
+  const sides = $$('.side').map(el => ({ el, left: el.classList.contains('l') }));
+  const words = $$('.w').map(el => ({ el, sec: el.closest('.sec'), s: +el.dataset.s || .3, r: el.style.getPropertyValue('--r') || '0deg' }));
+
+  // Luz que viene de arriba a la izquierda, por delante (y hacia abajo en CSS)
+  const L = (() => { const v = [-.45, -.55, 1], m = Math.hypot(...v); return v.map(x => x / m); })();
+  const rad = d => d * Math.PI / 180;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+  const absTop = el => { let t = 0; while (el) { t += el.offsetTop; el = el.offsetParent; } return t; };
+
+  let anchors = [], vh = innerHeight, desk = deskQ.matches;
+  function measure() {
+    vh = innerHeight; desk = deskQ.matches;
+    const max = document.documentElement.scrollHeight - vh;
+    // Cada sección «ancla» su pose cuando su centro coincide con el de la pantalla
+    anchors = secs.map((s, i) => i === 0 ? 0 : Math.min(max, absTop(s) + s.offsetHeight / 2 - vh / 2));
+    for (const o of sides) {
+      o.top = absTop(o.el); o.h = o.el.offsetHeight;
+      if (!desk) o.el.style.opacity = o.el.style.transform = '';
+    }
+    // Las palabras están en su sitio cuando su sección está centrada
+    for (const o of words) o.c = absTop(o.sec) + o.sec.offsetHeight / 2;
+  }
+
+  // Pose objetivo para un scroll dado: quieta cerca de cada ancla, gira entre una y otra
+  function target(y) {
+    if (y <= anchors[0]) return poses[0];
+    for (let i = 0; i < anchors.length - 1; i++) {
+      if (y < anchors[i + 1]) {
+        const t = (y - anchors[i]) / (anchors[i + 1] - anchors[i] || 1);
+        const e = ease(clamp((t - .14) / .72));
+        return poses[i].map((v, k) => v + (poses[i + 1][k] - v) * e);
+      }
+    }
+    return poses[poses.length - 1];
+  }
+
+  // Matriz de rotateX(rx) rotateY(ry) rotateZ(rz) aplicada a un vector
+  function rotate(n, rx, ry, rz) {
+    let [x, y, z] = n, c, s;
+    c = Math.cos(rad(rz)); s = Math.sin(rad(rz)); [x, y] = [c * x - s * y, s * x + c * y];
+    c = Math.cos(rad(ry)); s = Math.sin(rad(ry)); [x, z] = [c * x + s * z, -s * x + c * z];
+    c = Math.cos(rad(rx)); s = Math.sin(rad(rx)); [y, z] = [c * y - s * z, s * y + c * z];
+    return [x, y, z];
+  }
+
+  let cur = null, active = -1;
+  function frame(ts) {
+    const sy = scrollY;
+    const tgt = target(sy);
+    if (!cur || reduce) cur = tgt.slice();
+    else cur = cur.map((v, k) => v + (tgt[k] - v) * .09);
+    const [ry, rx0, rz0, y, s, g] = cur;
+    const fl = reduce ? 0 : Math.sin(ts / 1400);
+    const rx = rx0 + fl * 1.4, rz = rz0 + fl * .8;
+
+    // En móvil el libro vive en la mitad de arriba y el texto pasa por debajo
+    const ty = desk ? y : -20 + y * .3;
+    pos.style.transform = `translate3d(0, calc(${ty}vh + ${fl * 7}px), 0) scale(${s})`;
+    book.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
+
+    for (const f of faces) {
+      const n = rotate(f.n, rx, ry, rz);
+      const lit = .45 + .55 * Math.max(0, n[0] * L[0] + n[1] * L[1] + n[2] * L[2]);
+      f.sh.style.opacity = clamp(.92 - lit, 0, .6).toFixed(3);
+    }
+    const a = rad(ry);
+    gloss.style.backgroundPosition = `${50 + Math.sin(a) * 120}% 0`;
+    shadow.style.transform = `scaleX(${(Math.abs(Math.cos(a)) + Math.abs(Math.sin(a)) * .16).toFixed(3)})`;
+    glow.style.opacity = g.toFixed(3);
+
+    // El texto flota a los lados: aparece al llegar al centro y se va con otra velocidad
+    if (desk && !reduce) {
+      for (const o of sides) {
+        const d = (o.top + o.h / 2 - sy - vh / 2) / vh;
+        const op = 1 - clamp((Math.abs(d) - .3) / .3);
+        o.el.style.opacity = op.toFixed(3);
+        o.el.style.transform = `translate3d(0, ${d * (o.left ? 70 : 150)}px, 0)`;
+      }
+    }
+    if (!reduce) {
+      for (const o of words) {
+        const d = o.c - sy - vh / 2;
+        if (d > vh * 1.5 || d < -vh * 1.5) continue;
+        o.el.style.transform = `translate3d(0, ${(-d * o.s).toFixed(1)}px, 0) rotate(${o.r})`;
+      }
+    }
+
+    let near = 0;
+    anchors.forEach((v, i) => { if (Math.abs(sy - v) < Math.abs(sy - anchors[near])) near = i; });
+    if (near !== active) { dots.forEach((d, i) => d.classList.toggle('on', i === near)); active = near; }
+    bar.classList.toggle('on', sy > 40);
+    requestAnimationFrame(frame);
+  }
+
+  addEventListener('resize', measure);
+  addEventListener('load', measure);
+  measure();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
