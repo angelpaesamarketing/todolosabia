@@ -1,3 +1,7 @@
+# Permite que GoHighLevel (otro dominio) cargue las fuentes y las imágenes.
+/assets/*
+  Access-Control-Allow-Origin: *
+
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/img/*

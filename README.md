@@ -11,8 +11,16 @@ index.html               La landing
 assets/img/libro/        Caras del libro, retrato del autor, render 3/4 e imagen para compartir (og.jpg)
 assets/fonts/            Bebas Neue, Caveat, Fraunces cursiva e Inter (autoalojadas)
 favicon.png              Iconos
-_headers                 Caché de Cloudflare Pages
+_headers                 Caché y CORS (GHL carga fuentes e imágenes desde aquí)
+ghl/landing-ghl.html     La landing en un solo bloque para pegar en GoHighLevel (generado)
+ghl/build.py             Genera ese bloque a partir de index.html
+ghl/antes-ghl.html       Versión «antes» cutre para GHL (comparativa)
 ```
+
+## GoHighLevel
+
+En GHL: sección y fila a ancho completo con un elemento **Custom Code**, y pegar entero `ghl/landing-ghl.html`.
+Tras cambiar `index.html`, regenerarlo con `python3 ghl/build.py` y volver a pegarlo.
 
 ## Ver en local
 
