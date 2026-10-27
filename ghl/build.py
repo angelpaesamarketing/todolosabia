@@ -55,6 +55,7 @@ def prefix(text):
     return '\n'.join(out)
 
 
+css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)  # los comentarios romperían los selectores
 css = css.replace('url("/assets/', f'url("{BASE}/assets/')
 css = css.replace('html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--ink)}', 'html{scroll-behavior:smooth}')
 css = prefix(css)

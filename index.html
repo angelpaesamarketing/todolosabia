@@ -199,6 +199,9 @@ p+p{margin-top:14px}
 .shop span{font:400 1.6rem/1.05 var(--h);letter-spacing:.04em}
 .shop:hover{background:var(--red);border-color:var(--red)}
 .shop:hover small{color:#ffd9d5}
+/* «Comprar» lleva a las tiendas, por debajo de la barra fija; en móvil los dos bloques van juntos */
+#tiendas{scroll-margin-top:84px}
+@media (max-width:959px){#comprar .grid{gap:16px}}
 .isbn{margin-top:16px;font-size:.78rem;color:var(--dim)}
 .foot{position:relative;z-index:2;border-top:1px solid var(--line);padding:22px var(--p) 30px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
 font-size:.78rem;color:var(--dim);background:var(--ink)}
@@ -230,7 +233,7 @@ font-size:.78rem;color:var(--dim);background:var(--ink)}
     <a href="#personajes">Personajes</a>
     <a href="#proyecto-educativo">Proyecto educativo</a>
     <a href="#resenas">Reseñas</a>
-    <a class="btn red" href="#comprar">Comprar</a>
+    <a class="btn red" href="#tiendas">Comprar</a>
   </nav>
 </header>
 
@@ -283,7 +286,7 @@ font-size:.78rem;color:var(--dim);background:var(--ink)}
       <h3>Siete historias reales. <span class="red">Una verdad que duele.</span></h3>
       <p class="lead">Un drama con alma de thriller sobre lo que callan los jóvenes y no quieren ver los adultos.</p>
       <div class="btns">
-        <a class="btn red" href="#comprar">Comprar el libro</a>
+        <a class="btn red" href="#tiendas">Comprar el libro</a>
         <a class="btn ghost" href="#historia">Leer la sinopsis</a>
       </div>
     </div>
@@ -468,7 +471,7 @@ font-size:.78rem;color:var(--dim);background:var(--ink)}
       <h2>Lee. Siente. Reflexiona. <span class="red">Cambia.</span></h2>
     </div>
     <div class="side r">
-      <h3>Consigue tu ejemplar</h3>
+      <h3 id="tiendas">Consigue tu ejemplar</h3>
       <!-- PENDIENTE: cambiar las búsquedas por ISBN por los enlaces directos a la ficha de cada tienda -->
       <div class="shops">
         <a class="shop" href="https://www.amazon.es/s?k=9791370169756" target="_blank" rel="noopener"><small>Comprar en</small><span>Amazon</span></a>
@@ -592,6 +595,16 @@ font-size:.78rem;color:var(--dim);background:var(--ink)}
     bar.classList.toggle('on', sy > 40);
     requestAnimationFrame(frame);
   }
+
+  // «Comprar»: el bloque de tiendas flota (transform), así que el navegador no sabe dónde está.
+  // En escritorio se va a la pose final de la última sección; en móvil, a las tiendas bajo la barra.
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="#tiendas"]');
+    if (!a) return;
+    e.preventDefault();
+    const top = desk ? anchors[anchors.length - 1] : absTop($('#tiendas')) - 84;
+    scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+  });
 
   addEventListener('resize', measure);
   addEventListener('load', measure);

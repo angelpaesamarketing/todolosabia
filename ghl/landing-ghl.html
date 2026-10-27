@@ -8,7 +8,7 @@
 .tls{--ink:#0B0A09;--ink2:#151311;--bone:#ECE6DC;--dim:#A9A197;--red:#C0281F;--red2:#EA5045;--kraft:#C9A878;--line:rgba(236,230,220,.14);
 --h:'Bebas Neue',Impact,'Arial Narrow',sans-serif;--hand:'Caveat','Comic Sans MS',cursive;--q:'Fraunces',Georgia,serif;--u:'Inter',system-ui,sans-serif;
 --p:20px;
-/* Libro: alto, ancho (proporción de la portada) y grosor */
+
 --bh:min(38svh,360px,100vw);--bw:calc(var(--bh)*.7285);--bt:calc(var(--bh)*.115)}
 @media (min-width:960px){.tls{--p:clamp(32px,5vw,80px);--bh:min(62vh,600px,40vw)}}
 .tls *,.tls *::before,.tls *::after{box-sizing:border-box;margin:0;padding:0}
@@ -21,12 +21,10 @@ html{scroll-behavior:smooth}
 .tls .skip{position:absolute;left:-9999px;top:8px;z-index:20;background:var(--bone);color:var(--ink);padding:10px 14px}
 .tls .skip:focus{left:8px}
 .tls .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.tls /* Fondo: grano + viñeta */
-body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.09;
+.tls::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.09;
 background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .tls::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 30%,rgba(0,0,0,.75) 100%)}
-.tls /* Cabecera */
-.bar{position:fixed;inset:0 0 auto;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 var(--p);
+.tls .bar{position:fixed;inset:0 0 auto;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 var(--p);
 background:linear-gradient(var(--ink),rgba(11,10,9,0));transition:background .3s}
 .tls .bar.on{background:rgba(11,10,9,.92);border-bottom:1px solid var(--line)}
 .tls .brand{font:400 1.55rem/1 var(--h);letter-spacing:.04em}
@@ -42,8 +40,7 @@ font:400 1.15rem/1 var(--h);letter-spacing:.08em;cursor:pointer;transition:backg
 .tls .btn.ghost{background:none;color:var(--bone);border-color:rgba(236,230,220,.4)}
 .tls .btn.ghost:hover{background:var(--bone);color:var(--ink)}
 .tls .bar .btn{min-height:44px;padding:10px 18px}
-.tls /* Escenario del libro 3D (fijo,.tls detrás del texto) */
-.stage{position:fixed;inset:0;z-index:1;pointer-events:none;display:grid;place-items:center}
+.tls .stage{position:fixed;inset:0;z-index:1;pointer-events:none;display:grid;place-items:center}
 .tls .glow{position:absolute;left:50%;top:50%;width:min(120vw,1100px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
 background:radial-gradient(circle,rgba(192,40,31,.34),rgba(192,40,31,.08) 40%,transparent 66%);opacity:.5;transition:opacity .8s}
 .tls .drop{animation:drop 1.7s cubic-bezier(.2,.85,.25,1) both}
@@ -66,12 +63,10 @@ repeating-linear-gradient(#efe9dc 0 2px,#d6cdbd 2px 3px)}
 .tls .gl{position:absolute;inset:0;background:linear-gradient(112deg,transparent 38%,rgba(255,236,210,.18) 49%,transparent 60%) 0 0/260% 100% no-repeat;mix-blend-mode:screen}
 .tls .shadow{position:absolute;left:50%;top:calc(50% + var(--bh)/2 + 26px);width:calc(var(--bw)*1.1);height:34px;margin-left:calc(var(--bw)*-.55);
 border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),transparent);filter:blur(6px)}
-.tls /* Secciones: el texto flota a los lados del libro */
-main{position:relative}
+.tls main{position:relative}
 .tls .sec{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:calc(var(--bh) + 130px) var(--p) 40svh}
 .tls .hero{padding-bottom:56px}
-.tls /* En móvil los bloques de texto dejan huecos para ver girar el libro entre uno y otro */
-.grid{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;display:grid;gap:52svh}
+.tls .grid{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;display:grid;gap:52svh}
 .tls .hero .grid{gap:16px}
 .tls .side{background:rgba(11,10,9,.74);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);padding:24px 22px}
 @media (min-width:960px){.tls .sec{align-items:center;min-height:125vh;padding:110px var(--p)}
@@ -103,14 +98,12 @@ main{position:relative}
 .tls .hand.red{color:var(--red2)}
 .tls .quote{font-family:var(--q);font-style:italic;font-size:clamp(1.6rem,2.6vw,2.6rem);line-height:1.25;letter-spacing:-.01em}
 .tls .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.tls /* Decoración: palabras manuscritas que flotan */
-.words{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.tls .words{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .tls .w{position:absolute;font-family:var(--hand);font-weight:600;color:rgba(201,168,120,.16);white-space:nowrap;line-height:1;transform:rotate(var(--r,0deg))}
 .tls .w.rd{color:rgba(234,80,69,.22)}
 .tls .w.ch{font-family:var(--h);font-weight:400;color:rgba(236,230,220,.13);letter-spacing:.04em}
 @media (max-width:959px){.tls .w:nth-child(n+4){display:none}}
-.tls /* Hero */
-.hero .cue{display:none}
+.tls .hero .cue{display:none}
 @media (min-width:960px){.tls .hero{min-height:100vh}
 .tls .hero .cue{display:flex;position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;flex-direction:column;align-items:center;gap:10px;
     font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
@@ -118,8 +111,7 @@ main{position:relative}
 
 }
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
-.tls /* Personajes */
-.cast li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.tls .cast li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
 .tls .cast li:first-child{border-top:0}
 .tls .cast b{grid-row:span 2;font:400 1.1rem/1.6 var(--h);color:var(--red2);letter-spacing:.06em}
 .tls .cast strong{font:400 1.9rem/1 var(--h);letter-spacing:.04em}
@@ -130,20 +122,17 @@ main{position:relative}
 
 }
 .tls .cast-title{margin-bottom:18px}
-.tls /* Acoso */
-.help{margin-top:26px;padding:14px 16px;border-left:2px solid var(--red2);background:rgba(192,40,31,.08);font-size:.9rem;color:#D8D1C6}
+.tls .help{margin-top:26px;padding:14px 16px;border-left:2px solid var(--red2);background:rgba(192,40,31,.08);font-size:.9rem;color:#D8D1C6}
 .tls .help a{color:var(--bone);font-weight:500;text-decoration:underline;text-underline-offset:3px}
 .tls .claim{font:400 clamp(1.5rem,2.2vw,2.1rem)/1.15 var(--h);letter-spacing:.05em;margin-top:22px}
 .tls .claim .blue{color:#7FB2E5}
-.tls /* Autor */
-.author{width:min(300px,100%);height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.15) contrast(1.05);box-shadow:0 30px 60px -20px rgba(0,0,0,.9)}
+.tls .author{width:min(300px,100%);height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.15) contrast(1.05);box-shadow:0 30px 60px -20px rgba(0,0,0,.9)}
 .tls .side.l .author{margin-left:auto}
 .tls .caption{margin-top:14px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .tls .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:.9rem}
 .tls .links a{border-bottom:1px solid var(--red2);padding-bottom:2px}
 .tls .links a:hover{color:var(--red2)}
-.tls /* Reseñas */
-.rating{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:16px;font-size:.82rem;letter-spacing:.06em;color:var(--dim)}
+.tls .rating{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:16px;font-size:.82rem;letter-spacing:.06em;color:var(--dim)}
 .tls .stars{color:var(--red2);letter-spacing:.18em;font-size:1rem}
 .tls .rev{padding:22px 0;border-top:1px solid var(--line)}
 .tls .rev:first-child{padding-top:0;border-top:0}
@@ -155,19 +144,19 @@ main{position:relative}
 .tls .rev figcaption strong{color:var(--bone);font-weight:500}
 .tls .rev figcaption a{border-bottom:1px solid var(--red2);white-space:nowrap}
 .tls .rev figcaption a:hover{color:var(--red2)}
-.tls /* Comprar */
-.shops{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.tls .shops{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
 .tls .shop{display:flex;flex-direction:column;justify-content:center;min-height:76px;padding:12px 16px;border:1px solid rgba(236,230,220,.28);transition:background .2s,border-color .2s}
 .tls .shop small{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
 .tls .shop span{font:400 1.6rem/1.05 var(--h);letter-spacing:.04em}
 .tls .shop:hover{background:var(--red);border-color:var(--red)}
 .tls .shop:hover small{color:#ffd9d5}
+.tls #tiendas{scroll-margin-top:84px}
+@media (max-width:959px){.tls #comprar .grid{gap:16px}}
 .tls .isbn{margin-top:16px;font-size:.78rem;color:var(--dim)}
 .tls .foot{position:relative;z-index:2;border-top:1px solid var(--line);padding:22px var(--p) 30px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
 font-size:.78rem;color:var(--dim);background:var(--ink)}
 .tls .foot a:hover{color:var(--bone)}
-.tls /* Índice lateral de capítulos */
-.dots{display:none}
+.tls .dots{display:none}
 @media (min-width:960px){.tls .dots{display:flex;flex-direction:column;gap:6px;position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9}
 .tls .dots a{display:grid;place-items:center;width:24px;height:24px}
 .tls .dots a::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(236,230,220,.3);transition:background .3s,transform .3s}
@@ -205,7 +194,7 @@ body :has(> .tls){padding-left:0!important;padding-right:0!important;background:
     <a href="#personajes">Personajes</a>
     <a href="#proyecto-educativo">Proyecto educativo</a>
     <a href="#resenas">Reseñas</a>
-    <a class="btn red" href="#comprar">Comprar</a>
+    <a class="btn red" href="#tiendas">Comprar</a>
   </nav>
 </header>
 
@@ -258,7 +247,7 @@ body :has(> .tls){padding-left:0!important;padding-right:0!important;background:
       <h3>Siete historias reales. <span class="red">Una verdad que duele.</span></h3>
       <p class="lead">Un drama con alma de thriller sobre lo que callan los jóvenes y no quieren ver los adultos.</p>
       <div class="btns">
-        <a class="btn red" href="#comprar">Comprar el libro</a>
+        <a class="btn red" href="#tiendas">Comprar el libro</a>
         <a class="btn ghost" href="#historia">Leer la sinopsis</a>
       </div>
     </div>
@@ -443,7 +432,7 @@ body :has(> .tls){padding-left:0!important;padding-right:0!important;background:
       <h2>Lee. Siente. Reflexiona. <span class="red">Cambia.</span></h2>
     </div>
     <div class="side r">
-      <h3>Consigue tu ejemplar</h3>
+      <h3 id="tiendas">Consigue tu ejemplar</h3>
       <!-- PENDIENTE: cambiar las búsquedas por ISBN por los enlaces directos a la ficha de cada tienda -->
       <div class="shops">
         <a class="shop" href="https://www.amazon.es/s?k=9791370169756" target="_blank" rel="noopener"><small>Comprar en</small><span>Amazon</span></a>
@@ -581,6 +570,16 @@ body :has(> .tls){padding-left:0!important;padding-right:0!important;background:
     bar.classList.toggle('on', sy > 40);
     requestAnimationFrame(frame);
   }
+
+  // «Comprar»: el bloque de tiendas flota (transform), así que el navegador no sabe dónde está.
+  // En escritorio se va a la pose final de la última sección; en móvil, a las tiendas bajo la barra.
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="#tiendas"]');
+    if (!a) return;
+    e.preventDefault();
+    const top = desk ? anchors[anchors.length - 1] : absTop($('#tiendas')) - 84;
+    scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+  });
 
   addEventListener('resize', measure);
   addEventListener('load', measure);
